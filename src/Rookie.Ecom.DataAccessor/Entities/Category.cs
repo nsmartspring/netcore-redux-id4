@@ -15,5 +15,8 @@ namespace Rookie.Ecom.DataAccessor.Entities
         [Required]
         [StringLength(maximumLength: 100)]
         public string Desc { get; set; }
+
+        [StringLength(maximumLength: 250)]
+        public string ImageUrl { get; set; }
     }
 }
