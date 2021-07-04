@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using EnsureThat;
 using Microsoft.EntityFrameworkCore;
 using Rookie.Ecom.Business.Interfaces;
 using Rookie.Ecom.Contracts;
@@ -24,6 +25,7 @@ namespace Rookie.Ecom.Business.Services
 
         public async Task<CategoryDto> AddAsync(CategoryDto categoryDto)
         {
+            Ensure.Any.IsNotNull(categoryDto, nameof(categoryDto));
             var category = _mapper.Map<Category>(categoryDto);
             var item = await _baseRepository.AddAsync(category);
             return _mapper.Map<CategoryDto>(item);

@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace Rookie.Ecom.Validators
+namespace Rookie.Ecom.Web.Validators
 {
     /// <summary>
     /// BaseValidator.

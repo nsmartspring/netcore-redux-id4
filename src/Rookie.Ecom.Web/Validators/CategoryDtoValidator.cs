@@ -2,7 +2,7 @@
 using Rookie.Ecom.Contracts.Constants;
 using Rookie.Ecom.Contracts.Dtos;
 
-namespace Rookie.Ecom.Validators
+namespace Rookie.Ecom.Web.Validators
 {
     public class CategoryDtoValidator : BaseValidator<CategoryDto>
     {
