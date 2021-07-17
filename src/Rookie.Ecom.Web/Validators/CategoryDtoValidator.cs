@@ -8,6 +8,10 @@ namespace Rookie.Ecom.Web.Validators
     {
         public CategoryDtoValidator()
         {
+            RuleFor(m => m.Id)
+                 .NotNull()
+                 .WithMessage(x => string.Format(ErrorTypes.Common.RequiredError, nameof(x.Id)));
+
             RuleFor(m => m.Name)
                   .NotEmpty()
                   .WithMessage(x => string.Format(ErrorTypes.Common.RequiredError, nameof(x.Name)));

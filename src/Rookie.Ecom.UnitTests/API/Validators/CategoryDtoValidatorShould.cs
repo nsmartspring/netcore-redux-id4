@@ -49,11 +49,12 @@ namespace Rookie.Ecom.UnitTests.API.Validators
             // Act
             ValidationResult result = validator.Validate(new CategoryDto
             {
+                Id = System.Guid.NewGuid(),
                 Name = "test",
                 Desc = desc
             });
 
-            result.IsValid.Should().BeFalse();
+            result.Errors.Count.Should().Be(1);
             result
                 .Errors
                 .Select(x => x.ErrorMessage)

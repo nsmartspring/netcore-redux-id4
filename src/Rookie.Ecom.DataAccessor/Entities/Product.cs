@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Rookie.Ecom.DataAccessor.Entities
 {
-    public class Category : BaseEntity
+    public class Product : BaseEntity
     {
         [Required]
         [StringLength(maximumLength: 50)]
@@ -16,6 +16,14 @@ namespace Rookie.Ecom.DataAccessor.Entities
         [StringLength(maximumLength: 250)]
         public string ImageUrl { get; set; }
 
-        public ICollection<Product> Products { get; set; }
+        public decimal Price { get; set; }
+
+        public decimal? Cost { get; set; }
+
+        public bool IsFeatured { get; set; }
+
+        public Guid? CategoryId { get; set; }
+
+        public Category Category { get; set; }
     }
 }

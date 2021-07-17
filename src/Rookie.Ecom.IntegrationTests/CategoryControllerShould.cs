@@ -53,7 +53,7 @@ namespace Rookie.Ecom.IntegrationTests
             Assert.Equal(newCategory.Name, returnValue.Name);
             Assert.Equal(newCategory.Desc, returnValue.Desc);
 
-            returnValue.Should().NotBeNull();
+          
             returnValue.Id.Should().NotBe(Guid.Empty);
         }
 

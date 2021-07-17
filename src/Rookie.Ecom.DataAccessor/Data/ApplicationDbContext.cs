@@ -9,6 +9,9 @@ namespace Rookie.Ecom.DataAccessor.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+            //code first
+            //db first
+            //model first
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -20,6 +23,10 @@ namespace Rookie.Ecom.DataAccessor.Data
                 entity.ToTable(name: "Category");
             });
 
+            builder.Entity<Product>(entity =>
+            {
+                entity.ToTable(name: "Product");
+            });
         }
     }
 }

@@ -50,8 +50,15 @@ namespace Rookie.Ecom.Business.Services
 
         public async Task<CategoryDto> GetByIdAsync(Guid id)
         {
-            var categories = await _baseRepository.GetByIdAsync(id);
-            return _mapper.Map<CategoryDto>(categories);
+            // map roles and users: collection (roleid, userid)
+            // upsert: delete, update, insert
+            // input vs db
+            // input-y vs db-no => insert
+            // input-n vs db-yes => delete
+            // input-y vs db-y => update
+            // unique, distinct, no-duplicate
+            var category = await _baseRepository.GetByIdAsync(id);
+            return _mapper.Map<CategoryDto>(category);
         }
 
         public async Task<PagedResponseModel<CategoryDto>> PagedQueryAsync(string name, int page, int limit)

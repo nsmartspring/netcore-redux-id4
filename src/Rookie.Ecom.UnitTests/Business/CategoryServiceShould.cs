@@ -66,8 +66,9 @@ namespace Rookie.Ecom.UnitTests.Business
             _categoryRepository.Setup(x => x.GetByIdAsync(entity.Id)).Returns(Task.FromResult(entity));
             var result = await _categoryService.GetByIdAsync(entity.Id);
             result.Should().NotBeNull();
+            result.Id.Should().Be(entity.Id);
 
-            _categoryRepository.Verify(mock => mock.GetByIdAsync(entity.Id), Times.Once());
+            _categoryRepository.Verify(mock => mock.GetByIdAsync(entity.Id), Times.Once);
         }
 
         [Fact]
