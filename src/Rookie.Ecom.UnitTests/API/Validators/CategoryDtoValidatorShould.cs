@@ -1,5 +1,7 @@
 ﻿using FluentAssertions;
 using FluentValidation.Results;
+using Moq;
+using Rookie.Ecom.Business.Interfaces;
 using Rookie.Ecom.Contracts.Dtos;
 using Rookie.Ecom.Tests.Validations;
 using Rookie.Ecom.UnitTests.API.Validators.TestData;
@@ -12,11 +14,13 @@ namespace Rookie.Ecom.UnitTests.API.Validators
     public class CategoryDtoValidatorShould : BaseValidatorShould
     {
         private readonly ValidationTestRunner<CategoryDtoValidator, CategoryDto> _testRunner;
+        private readonly Mock<ICategoryService> _categoryService;
 
         public CategoryDtoValidatorShould()
         {
+            _categoryService = new Mock<ICategoryService>();
             _testRunner = ValidationTestRunner
-                .Create<CategoryDtoValidator, CategoryDto>(new CategoryDtoValidator());
+                .Create<CategoryDtoValidator, CategoryDto>(new CategoryDtoValidator(_categoryService.Object));
         }
 
         [Theory]
@@ -44,7 +48,7 @@ namespace Rookie.Ecom.UnitTests.API.Validators
         [MemberData(nameof(CategoryTestData.InvalidDescs), MemberType = typeof(CategoryTestData))]
         public void HaveErrorWhenDescIsInvalid(string desc, string errorMessage)
         {
-            var validator = new CategoryDtoValidator();
+            var validator = new CategoryDtoValidator(_categoryService.Object);
 
             // Act
             ValidationResult result = validator.Validate(new CategoryDto

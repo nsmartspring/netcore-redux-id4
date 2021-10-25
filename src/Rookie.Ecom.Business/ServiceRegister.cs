@@ -4,6 +4,8 @@ using Rookie.Ecom.Business.Interfaces;
 using Rookie.Ecom.Business.Services;
 using Rookie.Ecom.DataAccessor;
 using System.Reflection;
+using Refit;
+using System;
 
 namespace Rookie.Ecom.Business
 {
@@ -16,6 +18,9 @@ namespace Rookie.Ecom.Business
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddTransient<ICategoryService, CategoryService>();
+
+            services.AddRefitClient<IIdentityProviderService>()
+                .ConfigureHttpClient(c => c.BaseAddress = new Uri("https://localhost:5001"));
         }
     }
 }

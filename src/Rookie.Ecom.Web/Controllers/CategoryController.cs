@@ -33,6 +33,7 @@ namespace Rookie.Ecom.Web.Controllers
             Ensure.Any.IsNotNull(categoryDto, nameof(categoryDto));
             Ensure.Any.IsNotNull(categoryDto.Id, nameof(categoryDto.Id));
             await _categoryService.UpdateAsync(categoryDto);
+
             return NoContent();
         }
 

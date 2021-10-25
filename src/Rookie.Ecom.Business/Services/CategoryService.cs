@@ -25,7 +25,6 @@ namespace Rookie.Ecom.Business.Services
 
         public async Task<CategoryDto> AddAsync(CategoryDto categoryDto)
         {
-            Ensure.Any.IsNotNull(categoryDto, nameof(categoryDto));
             var category = _mapper.Map<Category>(categoryDto);
             var item = await _baseRepository.AddAsync(category);
             return _mapper.Map<CategoryDto>(item);
@@ -58,6 +57,12 @@ namespace Rookie.Ecom.Business.Services
             // input-y vs db-y => update
             // unique, distinct, no-duplicate
             var category = await _baseRepository.GetByIdAsync(id);
+            return _mapper.Map<CategoryDto>(category);
+        }
+
+        public async Task<CategoryDto> GetByNameAsync(string name)
+        {
+            var category = await _baseRepository.GetByAsync(x => x.Name == name);
             return _mapper.Map<CategoryDto>(category);
         }
 

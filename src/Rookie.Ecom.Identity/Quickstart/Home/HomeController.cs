@@ -39,6 +39,12 @@ namespace IdentityServerHost.Quickstart.UI
             return NotFound();
         }
 
+        [HttpGet("hello/{name}")]
+        public string Hello(string name)
+        {
+            return $"Hello {name}!";
+        }
+
         /// <summary>
         /// Shows the error page
         /// </summary>
