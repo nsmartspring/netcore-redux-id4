@@ -5,7 +5,7 @@ using Rookie.Ecom.Business.Interfaces;
 using Rookie.Ecom.Contracts.Dtos;
 using Rookie.Ecom.Tests.Validations;
 using Rookie.Ecom.UnitTests.API.Validators.TestData;
-using Rookie.Ecom.Web.Validators;
+using Rookie.Ecom.Admin.Validators;
 using System.Linq;
 using Xunit;
 

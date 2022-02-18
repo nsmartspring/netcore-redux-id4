@@ -1,5 +1,5 @@
 ﻿using FluentValidation.Results;
-using Rookie.Ecom.Web.Validators;
+using Rookie.Ecom.Admin.Validators;
 using System;
 using System.Linq.Expressions;
 

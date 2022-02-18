@@ -9,7 +9,7 @@ using Rookie.Ecom.Contracts.Dtos;
 using Rookie.Ecom.DataAccessor.Entities;
 using Rookie.Ecom.IntegrationTests.Common;
 using Rookie.Ecom.Tests;
-using Rookie.Ecom.Web.Controllers;
+using Rookie.Ecom.Admin.Controllers;
 using System;
 using System.Threading.Tasks;
 using Xunit;

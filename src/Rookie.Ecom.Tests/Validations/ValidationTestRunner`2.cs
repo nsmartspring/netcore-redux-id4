@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Rookie.Ecom.Web.Validators;
+using Rookie.Ecom.Admin.Validators;
 using System;
 
 namespace Rookie.Ecom.Tests.Validations
