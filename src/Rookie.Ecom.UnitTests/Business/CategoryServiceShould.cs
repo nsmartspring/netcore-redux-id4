@@ -1,15 +1,12 @@
 ﻿using AutoMapper;
 using FluentAssertions;
-using MockQueryable.Moq;
 using Moq;
 using Rookie.Ecom.Business;
-using Rookie.Ecom.Business.Interfaces;
 using Rookie.Ecom.Business.Services;
 using Rookie.Ecom.Contracts.Dtos;
 using Rookie.Ecom.DataAccessor.Entities;
+using Rookie.Ecom.DataAccessor.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Xunit;

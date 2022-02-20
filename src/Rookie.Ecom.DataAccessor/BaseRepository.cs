@@ -1,13 +1,13 @@
 using Microsoft.EntityFrameworkCore;
-using Rookie.Ecom.Business.Interfaces;
 using Rookie.Ecom.DataAccessor.Data;
+using Rookie.Ecom.DataAccessor.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Rookie.Ecom.Business
+namespace Rookie.Ecom.DataAccessor
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {

@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using EnsureThat;
 using Microsoft.EntityFrameworkCore;
 using Rookie.Ecom.Business.Interfaces;
 using Rookie.Ecom.Contracts;
 using Rookie.Ecom.Contracts.Dtos;
 using Rookie.Ecom.DataAccessor.Entities;
+using Rookie.Ecom.DataAccessor.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

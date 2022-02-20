@@ -32,7 +32,7 @@ namespace Rookie.Ecom.Admin.Validators
              async (dto, cancellation) =>
              {
                  var exit = await categoryService.GetByNameAsync(dto.Name);
-                 return exit != null && exit.Id != dto.Id;
+                 return exit == null || exit.Id != dto.Id;
              }
           ).WithMessage("Duplicate record");
         }

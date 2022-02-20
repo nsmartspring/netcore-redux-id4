@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Rookie.Ecom.DataAccessor.Data;
 
 namespace Rookie.Ecom.DataAccessor.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220220043024_Add_Quantity_Product")]
+    partial class Add_Quantity_Product
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,6 +81,10 @@ namespace Rookie.Ecom.DataAccessor.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("ImageUrl")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
                     b.Property<bool>("IsFeatured")
                         .HasColumnType("bit");
 
@@ -106,42 +112,6 @@ namespace Rookie.Ecom.DataAccessor.Migrations
                     b.ToTable("Product");
                 });
 
-            modelBuilder.Entity("Rookie.Ecom.DataAccessor.Entities.ProductPicture", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("CreatorId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("PictureUrl")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<Guid?>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("Pubished")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Title")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductPicture");
-                });
-
             modelBuilder.Entity("Rookie.Ecom.DataAccessor.Entities.Product", b =>
                 {
                     b.HasOne("Rookie.Ecom.DataAccessor.Entities.Category", "Category")
@@ -151,23 +121,9 @@ namespace Rookie.Ecom.DataAccessor.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("Rookie.Ecom.DataAccessor.Entities.ProductPicture", b =>
-                {
-                    b.HasOne("Rookie.Ecom.DataAccessor.Entities.Product", "Product")
-                        .WithMany("ProductPictures")
-                        .HasForeignKey("ProductId");
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("Rookie.Ecom.DataAccessor.Entities.Category", b =>
                 {
                     b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("Rookie.Ecom.DataAccessor.Entities.Product", b =>
-                {
-                    b.Navigation("ProductPictures");
                 });
 #pragma warning restore 612, 618
         }
