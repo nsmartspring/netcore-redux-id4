@@ -21,5 +21,7 @@ namespace Rookie.Ecom.DataAccessor.Interfaces
         Task UpdateAsync(T entity);
 
         Task DeleteAsync(object id);
+
+        Task<bool> ExistAsync(Expression<Func<T, bool>> predicate);
     }
 }

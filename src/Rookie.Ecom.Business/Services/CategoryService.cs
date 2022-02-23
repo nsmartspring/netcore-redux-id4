@@ -25,6 +25,9 @@ namespace Rookie.Ecom.Business.Services
 
         public async Task<CategoryDto> AddAsync(CategoryDto categoryDto)
         {
+            if (categoryDto == null)
+                throw new ArgumentNullException();
+
             var category = _mapper.Map<Category>(categoryDto);
             var item = await _baseRepository.AddAsync(category);
             return _mapper.Map<CategoryDto>(item);
@@ -66,12 +69,18 @@ namespace Rookie.Ecom.Business.Services
             return _mapper.Map<CategoryDto>(category);
         }
 
-        public async Task<PagedResponseModel<CategoryDto>> PagedQueryAsync(string name, int page, int limit)
+        public async Task<PagedResponseModel<CategoryDto>>
+            PagedQueryAsync(string name, 
+            string desc, 
+            bool? published,
+            int page, int limit)
         {
             var query = _baseRepository.Entities;
 
             query = query.Where(x => string.IsNullOrEmpty(name) || x.Name.Contains(name));
-
+            query = query.Where(x => string.IsNullOrEmpty(desc) || x.Name.Contains(desc));
+            query = query.Where(x => !published.HasValue || x.Pubished == published.Value);
+          
             query = query.OrderBy(x => x.Name);
 
             var assets = await query

@@ -51,7 +51,7 @@ namespace Rookie.Ecom.DataAccessor
                     query = query.Include(includeProperty);
                 }
             }
-            return await query.FirstOrDefaultAsync(filter);
+            return await query.AsNoTracking().FirstOrDefaultAsync(filter);
         }
 
         public async Task<T> GetByIdAsync(object id)
@@ -64,6 +64,12 @@ namespace Rookie.Ecom.DataAccessor
         {
             _dbContext.Update(entity);
             await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<bool> ExistAsync(Expression<Func<T, bool>> predicate)
+        {
+            var exist = _dbContext.Set<T>().Where(predicate);
+            return await exist.AnyAsync();
         }
     }
 }
