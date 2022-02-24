@@ -22,8 +22,6 @@ namespace Rookie.Ecom.DataAccessor.Entities
 
         public bool IsFeatured { get; set; }
 
-        public Guid? CategoryId { get; set; }
-
         public Category Category { get; set; }
     }
 }

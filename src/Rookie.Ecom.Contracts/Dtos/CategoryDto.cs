@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Rookie.Ecom.Contracts.Dtos
 {
@@ -9,5 +10,8 @@ namespace Rookie.Ecom.Contracts.Dtos
         public string Name { get; set; }
 
         public string Desc { get; set; }
+
+
+        
     }
 }
