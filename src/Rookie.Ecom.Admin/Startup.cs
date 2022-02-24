@@ -29,11 +29,6 @@ namespace Rookie.Ecom.Admin
             {
                 x.Filters.Add(typeof(ValidatorActionFilter));
             })
-            .AddFluentValidation(fv =>
-            {
-                fv.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-                fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
-            })
             .AddJsonOptions(ops =>
             {
                 ops.JsonSerializerOptions.IgnoreNullValues = true;
@@ -41,6 +36,11 @@ namespace Rookie.Ecom.Admin
                 ops.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
                 ops.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
                 ops.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+            })
+            .AddFluentValidation(fv =>
+            {
+                fv.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+                fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
             });
 
             services.AddHttpContextAccessor();

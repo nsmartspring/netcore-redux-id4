@@ -88,7 +88,7 @@ namespace Rookie.Ecom.Identity
                 },
                 new Client
                 {
-                    ClientName = "Rookie.Ecom.Web",
+                    ClientName = "Rookie.Ecom.Admin",
                     ClientId = "rookieecom",
                     AllowedGrantTypes = GrantTypes.Implicit,
                     RedirectUris = new List<string>()
