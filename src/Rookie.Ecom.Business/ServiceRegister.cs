@@ -18,6 +18,10 @@ namespace Rookie.Ecom.Business
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IRatingService, RatingService>();
+            services.AddTransient<IOrderService, OrderService>();
+            services.AddTransient<ICartService, CartService>();
+            services.AddTransient<IAddressService, AddressService>();
         }
     }
 }

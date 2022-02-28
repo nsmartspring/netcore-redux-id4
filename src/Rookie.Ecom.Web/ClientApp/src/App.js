@@ -8,14 +8,14 @@ import FetchData from './components/FetchData';
 
 import CallbackPage from './components/callback/CallbackPage';
 import ProfilePage from './components/profile/ProfilePage';
-import Product from './components/Product';
+
 
 export default () => (
     <Layout>
         <Route exact path="/" component={Home} />
         <Route path="/counter" component={Counter} />
         <Route path="/category/:page?" component={Category} />
-        <Route path="/product/:page?" component={Product} />
+       
         <Route path="/fetch-data/:startDateIndex?" component={FetchData} />
 
         <Route path="/profile" component={ProfilePage} />

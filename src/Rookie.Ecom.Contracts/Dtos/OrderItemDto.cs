@@ -5,7 +5,7 @@ namespace Rookie.Ecom.Contracts.Dtos
 {
     public class OrderItemDto 
     {
-
+        public Guid? Id { get; set; }
         public decimal Price { get; set; }
 
         public decimal Quantity { get; set; }

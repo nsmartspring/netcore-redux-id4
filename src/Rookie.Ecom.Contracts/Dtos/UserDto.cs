@@ -18,8 +18,9 @@ namespace Rookie.Ecom.Contracts.Dtos
 
         [StringLength(maximumLength: 250)]
         public int Age { get; set; }
-
-        public bool Gender { get; set; }
+        
+        [StringLength(maximumLength: 20)]
+        public string Gender { get; set; }
         
         [Required]
         [StringLength(maximumLength: 100)]
@@ -37,13 +38,10 @@ namespace Rookie.Ecom.Contracts.Dtos
         //public OrderDto Order { get; set; }
         //public RatingDto Rating { get; set; }
         //public CartDto Cart { get; set; }
-        //public AddressDto Address { get; set; }
+        public AddressDto Address { get; set; }
 
-        public ICollection<RoleDto> Role { get; set; }
-        public ICollection<RatingDto> Rating { get; set; }
-        public ICollection<OrderDto> Order { get; set; }
-        public ICollection<CartDto> Cart { get; set; }
-        public ICollection<AddressDto> Address { get; set; }
+
+
 
 
 

@@ -8,7 +8,7 @@ namespace Rookie.Ecom.Contracts.Dtos
 
     public class ProductImageDto 
     {
-        
+        public Guid? Id { get; set; }
         [StringLength(maximumLength: 250)]
         public string ImageUrl { get; set; }
 

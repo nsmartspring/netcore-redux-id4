@@ -16,7 +16,7 @@ namespace Rookie.Ecom.DataAccessor.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.7")
+                .HasAnnotation("ProductVersion", "5.0.12")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Rookie.Ecom.DataAccessor.Entities.Address", b =>
@@ -66,6 +66,9 @@ namespace Rookie.Ecom.DataAccessor.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CartName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -198,12 +201,7 @@ namespace Rookie.Ecom.DataAccessor.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Order");
                 });
@@ -434,12 +432,16 @@ namespace Rookie.Ecom.DataAccessor.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<bool>("Gender")
-                        .HasColumnType("bit");
+                    b.Property<string>("Gender")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("LastName")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<Guid?>("OrderId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -459,13 +461,15 @@ namespace Rookie.Ecom.DataAccessor.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("OrderId");
+
                     b.ToTable("User");
                 });
 
             modelBuilder.Entity("Rookie.Ecom.DataAccessor.Entities.Address", b =>
                 {
                     b.HasOne("Rookie.Ecom.DataAccessor.Entities.User", "User")
-                        .WithMany("Address")
+                        .WithMany()
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
@@ -474,7 +478,7 @@ namespace Rookie.Ecom.DataAccessor.Migrations
             modelBuilder.Entity("Rookie.Ecom.DataAccessor.Entities.Cart", b =>
                 {
                     b.HasOne("Rookie.Ecom.DataAccessor.Entities.User", "User")
-                        .WithMany("Cart")
+                        .WithMany()
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
@@ -493,15 +497,6 @@ namespace Rookie.Ecom.DataAccessor.Migrations
                     b.Navigation("Cart");
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("Rookie.Ecom.DataAccessor.Entities.Order", b =>
-                {
-                    b.HasOne("Rookie.Ecom.DataAccessor.Entities.User", "User")
-                        .WithMany("Order")
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Rookie.Ecom.DataAccessor.Entities.OrderItem", b =>
@@ -544,7 +539,7 @@ namespace Rookie.Ecom.DataAccessor.Migrations
                         .HasForeignKey("ProductId");
 
                     b.HasOne("Rookie.Ecom.DataAccessor.Entities.User", "User")
-                        .WithMany("Rating")
+                        .WithMany()
                         .HasForeignKey("UserId");
 
                     b.Navigation("Product");
@@ -555,10 +550,17 @@ namespace Rookie.Ecom.DataAccessor.Migrations
             modelBuilder.Entity("Rookie.Ecom.DataAccessor.Entities.Role", b =>
                 {
                     b.HasOne("Rookie.Ecom.DataAccessor.Entities.User", "User")
-                        .WithMany("Role")
+                        .WithMany()
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Rookie.Ecom.DataAccessor.Entities.User", b =>
+                {
+                    b.HasOne("Rookie.Ecom.DataAccessor.Entities.Order", null)
+                        .WithMany("User")
+                        .HasForeignKey("OrderId");
                 });
 
             modelBuilder.Entity("Rookie.Ecom.DataAccessor.Entities.Cart", b =>
@@ -571,17 +573,9 @@ namespace Rookie.Ecom.DataAccessor.Migrations
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("Rookie.Ecom.DataAccessor.Entities.User", b =>
+            modelBuilder.Entity("Rookie.Ecom.DataAccessor.Entities.Order", b =>
                 {
-                    b.Navigation("Address");
-
-                    b.Navigation("Cart");
-
-                    b.Navigation("Order");
-
-                    b.Navigation("Rating");
-
-                    b.Navigation("Role");
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

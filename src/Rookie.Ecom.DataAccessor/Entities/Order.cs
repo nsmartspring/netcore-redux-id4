@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -21,9 +22,7 @@ namespace Rookie.Ecom.DataAccessor.Entities
 
         public int Quantity { get; set; }
 
-    
-
-        public User User { get; set; }
+        public ICollection<User> User { get; set; }
 
 
 

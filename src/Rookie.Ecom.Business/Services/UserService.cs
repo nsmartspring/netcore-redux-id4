@@ -67,7 +67,7 @@ namespace Rookie.Ecom.Business.Services
 
             query = query.Where(x => string.IsNullOrEmpty(name) || x.Email.Contains(name));
 
-            query = query.OrderBy(x => x.Email);
+            query = query.OrderBy(x => x.Id);
 
             var assets = await query
                 .AsNoTracking()

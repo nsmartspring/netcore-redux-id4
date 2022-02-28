@@ -10,7 +10,7 @@ namespace Rookie.Ecom.DataAccessor.Entities
     public class Cart : BaseEntity
     {
 
-
+        public string CartName { get; set; }
 
         public User User { get; set; }
 

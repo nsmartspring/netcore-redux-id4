@@ -8,6 +8,7 @@ namespace Rookie.Ecom.Contracts.Dtos
   
     public class AddressDto 
     {
+        public Guid? Id { get; set; }
         [Required]
         [StringLength(maximumLength: 50)]
         public string AddressName { get; set; }
@@ -19,8 +20,7 @@ namespace Rookie.Ecom.Contracts.Dtos
         [StringLength(maximumLength: 250)]
         public string Country { get; set; }
 
-
-        public UserDto User { get; set; }
-
+       
+        
     }
 }

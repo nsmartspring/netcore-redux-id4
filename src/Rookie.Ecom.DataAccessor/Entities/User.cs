@@ -19,7 +19,8 @@ namespace Rookie.Ecom.DataAccessor.Entities
         [StringLength(maximumLength: 250)]
         public int Age { get; set; }
 
-        public bool Gender { get; set; }
+        [StringLength(maximumLength: 20)]
+        public string Gender { get; set; }
         
         [Required]
         [StringLength(maximumLength: 100)]
@@ -33,11 +34,7 @@ namespace Rookie.Ecom.DataAccessor.Entities
         [StringLength(maximumLength: 100)]
         public string Password { get; set; }
 
-        public ICollection<Role> Role { get; set; }
-        public ICollection<Rating> Rating { get; set; }
-        public ICollection<Order> Order { get; set; }
-        public ICollection<Cart> Cart { get; set; }
-        public ICollection<Address> Address { get; set; }
+      
 
 
 

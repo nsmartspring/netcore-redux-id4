@@ -8,7 +8,7 @@ namespace Rookie.Ecom.Contracts.Dtos
 
     public class CartItemDto 
     {
-
+        public Guid? Id { get; set; }
         public decimal Quantity { get; set; }
 
         
